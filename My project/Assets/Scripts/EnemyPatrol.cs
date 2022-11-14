@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrol : Enemy
+public class EnemyPatrol : MonoBehaviour
 {
     public Vector3 targetPosition;
     private Vector3 startPosition;

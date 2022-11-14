@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool grounded = false;
     public bool frozen = false;
     Rigidbody2D r2d;
-    public TMP_Text timer; // Call timer.GetComponent<Timer>().reset(); to reset timer on death
+    public TMP_Text timer;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +112,15 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            die();
+        }
     }
      
+    void die()
+    {
+        timer.GetComponent<Timer>().reset();
+    }
 }
