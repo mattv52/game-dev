@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 477031678}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -417,6 +417,7 @@ MonoBehaviour:
   speedVector: 0
   grounded: 0
   frozen: 0
+  timer: {fileID: 1254162607}
 --- !u!50 &477031675
 Rigidbody2D:
   serializedVersion: 4
@@ -1547,7 +1548,7 @@ GameObject:
   - component: {fileID: 1254162607}
   - component: {fileID: 1254162609}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1683,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1254162607}
-  playing: 0
+  playing: 1
 --- !u!1001 &1341729951
 PrefabInstance:
   m_ObjectHideFlags: 0

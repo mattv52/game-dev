@@ -14,6 +14,10 @@ public class Timer : MonoBehaviour
 		playing = true;
 	}
 
+	public void reset() {
+		timer = 0.0f;
+	} 
+
 	void Update () {
 		if(playing == true){
 

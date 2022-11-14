@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using static System.Math;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool grounded = false;
     public bool frozen = false;
     Rigidbody2D r2d;
+    public TMP_Text timer; // Call timer.GetComponent<Timer>().reset(); to reset timer on death
 
     // Start is called before the first frame update
     void Start()
