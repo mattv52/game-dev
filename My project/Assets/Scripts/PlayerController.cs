@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
      
     void die()
     {
+        // Move player back to start
         timer.GetComponent<Timer>().reset();
     }
 }
