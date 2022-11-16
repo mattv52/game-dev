@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public float jumpHeight = 6.5f;
 
+    private Vector3 startPosition;
     public float speedVector = 0;
     float moveDirection = 0;
     float preSpeed = 0;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
         r2d = GetComponent<Rigidbody2D>();
     }
 
@@ -121,7 +123,7 @@ public class PlayerController : MonoBehaviour
      
     void die()
     {
-        // Move player back to start
+        transform.position = startPosition;
         timer.GetComponent<Timer>().reset();
     }
 }
