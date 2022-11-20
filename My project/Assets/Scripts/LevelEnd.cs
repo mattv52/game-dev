@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject canvas;
+
     void Start()
     {
-        
+        // canvas.SetActive(false);
     }
 
-    public void retry()
+    void Update()
     {
-        
-    }
-
-    public void toMenu()
-    {
-        SceneManager.LoadScene(0);
+        if(Input.GetKeyDown(KeyCode.H)){
+            print("H");
+            canvas.SetActive(true);
+        }
     }
 }
