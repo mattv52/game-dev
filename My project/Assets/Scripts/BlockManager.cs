@@ -16,7 +16,7 @@ public class BlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && Time.timeScale == 1)
         {
             toggleBlocks();
         }
