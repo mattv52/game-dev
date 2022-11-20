@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void pause()
     {
-        
+        Time.timeScale = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void play()
     {
-        
+        Time.timeScale = 1;
     }
 }

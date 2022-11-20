@@ -24,7 +24,8 @@ public class Timer : MonoBehaviour
 			timer += Time.deltaTime;
 			int minutes = Mathf.FloorToInt(timer / 60F);
 			int seconds = Mathf.FloorToInt(timer % 60F);
-			int milliseconds = Mathf.FloorToInt((timer * 100F) % 100F);
+			int milliseconds = Mathf.FloorToInt((timer * 10F) % 10F); // 1 decimal milliseconds
+			// int milliseconds = Mathf.FloorToInt((timer * 100F) % 100F); //2 decimal milliseconds
 			timerText.text = minutes.ToString ("0") + ":" + seconds.ToString ("00") + "." + milliseconds.ToString("0");
 		}
 	}
