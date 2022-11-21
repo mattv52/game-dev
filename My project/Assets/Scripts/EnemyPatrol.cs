@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public Vector3 targetPosition;
+    public GameObject target;
+    private Vector3 targetPosition;
     private Vector3 startPosition;
 
     public float moveSpeed;
@@ -14,6 +15,7 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        targetPosition = target.transform.position;
         movingToTarget = true;
     }
 
