@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 using static System.Math;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public float jumpHeight = 5;
 
-    private Vector3 startPosition;
     public float speedVector = 0;
     float moveDirection = 0;
     float preSpeed = 0;
@@ -25,12 +24,10 @@ public class PlayerController : MonoBehaviour
     bool canDouble = false;
     public bool touchingSlime = false;
     Rigidbody2D r2d;
-    public TMP_Text timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
         r2d = GetComponent<Rigidbody2D>();
         r2d.freezeRotation = true;
     }
@@ -142,18 +139,12 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            die();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if (collision.gameObject.tag == "Slime")
         {
             touchingSlime = true;
         }
-    }
-     
-    void die()
-    {
-        transform.position = startPosition;
-        timer.GetComponent<Timer>().reset();
     }
 }
