@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         //Get movement direction
         if((Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))){
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-            sr.flipX = moveDirection == -1 ? true : false;
+            if(!frozen) sr.flipX = moveDirection == -1 ? true : false;
         }
         else{
             moveDirection = 0;
