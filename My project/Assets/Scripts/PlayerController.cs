@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float deccelMod = 2;
     public float speed = 0;
     public float jumpHeight = 5;
+    public float voidDepth = -10;
 
     public float speedVector = 0;
     float moveDirection = 0;
@@ -24,20 +25,26 @@ public class PlayerController : MonoBehaviour
     bool canDouble = false;
     public bool touchingSlime = false;
     Rigidbody2D r2d;
+    SpriteRenderer sr;
+
 
     // Start is called before the first frame update
     void Start()
     {
         r2d = GetComponent<Rigidbody2D>();
         r2d.freezeRotation = true;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y < voidDepth) {SceneManager.LoadScene(SceneManager.GetActiveScene().name);}
+
         //Get movement direction
         if((Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))){
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
+            sr.flipX = moveDirection == -1 ? true : false;
         }
         else{
             moveDirection = 0;
