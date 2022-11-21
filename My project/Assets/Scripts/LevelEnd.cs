@@ -23,13 +23,6 @@ public class LevelEnd : MonoBehaviour
         displayRankTimes.text = $"S = {rankTimes[0]}\nA = {rankTimes[1]}\nB = {rankTimes[2]}";
     }
 
-    // void Update()
-    // {
-    //     if(Input.GetKeyDown(KeyCode.H)){
-    //         endLevel();
-    //     }
-    // }
-
     public void endLevel() 
     {
         updateRank();
