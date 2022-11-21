@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour
 {
-    
+	private void Awake() {
+		GameObject[] musicObj = GameObject.FindGameObjectsWithTag("BackgroundMusic");
+        if(musicObj.Length > 1) {Destroy(this.gameObject);}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    void toggleAudio()
-    {
-        
-    }
+        DontDestroyOnLoad(this.gameObject);
+	}
 }

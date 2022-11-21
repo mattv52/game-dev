@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - Slime
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
