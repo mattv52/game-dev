@@ -153,5 +153,9 @@ public class PlayerController : MonoBehaviour
         {
             touchingSlime = true;
         }
+        if (collision.gameObject.tag == "Bounce")
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight * 2);
+        }
     }
 }
