@@ -11,12 +11,13 @@ public class BlockManager : MonoBehaviour
     void Start()
     {
         spriteRenderes = GetComponentsInChildren<SpriteRenderer>();
+        toggleBlocks();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && Time.timeScale == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 1)
         {
             toggleBlocks();
         }

@@ -8,12 +8,12 @@ using static System.Math;
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxSpeed = 13;
-    public float accel = 0.8f;
+    public float maxSpeed = 4;
+    public float accel = 0.4f;
     public float deccel = 2;
     public float deccelMod = 2;
     public float speed = 0;
-    public float jumpHeight = 6.5f;
+    public float jumpHeight = 5;
 
     private Vector3 startPosition;
     public float speedVector = 0;
@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     float preMove = 0;
     public bool grounded = false;
     public bool frozen = false;
+    bool canDouble = false;
+    public bool touchingSlime = false;
     Rigidbody2D r2d;
     public TMP_Text timer;
 
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         startPosition = transform.position;
         r2d = GetComponent<Rigidbody2D>();
+        r2d.freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -48,8 +51,15 @@ public class PlayerController : MonoBehaviour
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
             grounded = false;
+            touchingSlime = false;
+        }
+        else if(Input.GetKeyDown(KeyCode.W) && canDouble && !frozen)
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+            canDouble = false;
         }
 
+        //Freeze controls
         if (Input.GetKeyDown(KeyCode.Space))
         {
             frozen = !frozen;
@@ -59,9 +69,15 @@ public class PlayerController : MonoBehaviour
                 preMove = moveDirection;
                 speed = 0;
                 speedVector = 0;
-                r2d.velocity = new Vector2(0, r2d.velocity.y);
-                r2d.velocity = new Vector2(0, r2d.velocity.x);
-                r2d.gravityScale = 0;
+                if (touchingSlime){
+                    speedVector = (moveDirection) * preSpeed;
+                    r2d.velocity = new Vector2(speedVector, r2d.velocity.y);
+                }
+                else {
+                    r2d.velocity = new Vector2(0, r2d.velocity.y);
+                    r2d.velocity = new Vector2(0, r2d.velocity.x);
+                    r2d.gravityScale = 0;
+                }
             }
             else
             {
@@ -106,6 +122,14 @@ public class PlayerController : MonoBehaviour
 
             r2d.velocity = new Vector2(speedVector, r2d.velocity.y);
         }
+        else
+        {
+            if (touchingSlime)
+            {
+                speedVector = (preMove) * preSpeed;
+                r2d.velocity = new Vector2(speedVector, r2d.velocity.y);
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -113,11 +137,17 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            canDouble = true;
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             die();
+        }
+
+        if (collision.gameObject.tag == "Slime")
+        {
+            touchingSlime = true;
         }
     }
      
