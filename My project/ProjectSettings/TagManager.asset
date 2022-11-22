@@ -52,6 +52,9 @@ TagManager:
   - name: Foreground
     uniqueID: 2729469911
     locked: 0
+  - name: Decoration
+    uniqueID: 817276885
+    locked: 0
   - name: Collision Map
     uniqueID: 3639087033
     locked: 0

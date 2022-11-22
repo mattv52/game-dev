@@ -185,6 +185,12 @@ public class PlayerController : MonoBehaviour
         {
             touchingSlime = false;
             grounded = false;
+            if (frozen)
+            {
+                r2d.velocity = new Vector2(0, r2d.velocity.y);
+                r2d.velocity = new Vector2(0, r2d.velocity.x);
+                r2d.gravityScale = 0;
+            }
         }
 
         if (collision.gameObject.tag == "Bounce")
