@@ -55,8 +55,8 @@ public class LevelEnd : MonoBehaviour
 
         if (t1 == t2) {return true;} else
         if (min1 < min2) {return true;} else
-        if (sec1 < sec2) {return true;} else
-        if (mil1 < mil2) {return true;} else
+        if (min1 < min2 && sec1 < sec2) {return true;} else
+        if (min1 < min2 && sec1 < sec2 && mil1 < mil2) {return true;} else
         return false;
     }
 }
