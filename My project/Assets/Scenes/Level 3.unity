@@ -2496,15 +2496,15 @@ PrefabInstance:
       objectReference: {fileID: 622266570}
     - target: {fileID: 1386180360599044834, guid: f0bf9cac1cb922b028c12ba2454d2de3, type: 3}
       propertyPath: rankTimes.Array.data[0]
-      value: 0:00.00
+      value: 0:30.00
       objectReference: {fileID: 0}
     - target: {fileID: 1386180360599044834, guid: f0bf9cac1cb922b028c12ba2454d2de3, type: 3}
       propertyPath: rankTimes.Array.data[1]
-      value: 0:00.00
+      value: 0:35.00
       objectReference: {fileID: 0}
     - target: {fileID: 1386180360599044834, guid: f0bf9cac1cb922b028c12ba2454d2de3, type: 3}
       propertyPath: rankTimes.Array.data[2]
-      value: 0:00.00
+      value: 0:40.00
       objectReference: {fileID: 0}
     - target: {fileID: 1386180360599044837, guid: f0bf9cac1cb922b028c12ba2454d2de3, type: 3}
       propertyPath: m_Pivot.x
@@ -5071,6 +5071,7 @@ MonoBehaviour:
   sr: {fileID: 911770448}
   target: {fileID: 932528662}
   player: {fileID: 1767376145}
+  col: {fileID: 1501934640}
   moveSpeed: 4
 --- !u!1 &932528662
 GameObject:

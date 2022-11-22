@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Collision Map
+    uniqueID: 3639087033
+    locked: 0
   - name: Background
     uniqueID: 704336599
     locked: 0
@@ -54,7 +57,4 @@ TagManager:
     locked: 0
   - name: Decoration
     uniqueID: 817276885
-    locked: 0
-  - name: Collision Map
-    uniqueID: 3639087033
     locked: 0
