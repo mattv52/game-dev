@@ -24,8 +24,11 @@ public class PlayerController : MonoBehaviour
     public bool frozen = false;
     bool canDouble = false;
     public bool touchingSlime = false;
+    public GameObject tint;
     Rigidbody2D r2d;
     SpriteRenderer sr;
+    public AudioSource pewOn; 
+    public AudioSource pewOff; 
 
 
     // Start is called before the first frame update
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         //Get movement direction
         if((Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))){
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-            sr.flipX = moveDirection == -1 ? true : false;
+            if(!frozen) sr.flipX = moveDirection == -1 ? true : false;
         }
         else{
             moveDirection = 0;
@@ -67,8 +70,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             frozen = !frozen;
+            tint.SetActive(frozen);
             if (frozen)
             {
+                pewOn.Play(0);
                 preSpeed = speed;
                 preMove = moveDirection;
                 speed = 0;
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                pewOff.Play(0);
                 speed = preSpeed;
                 moveDirection = preMove;
                 speedVector = (moveDirection) * speed;
