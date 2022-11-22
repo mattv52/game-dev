@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float deccelMod = 2;
     public float speed = 0;
     public float jumpHeight = 5;
-    public float voidDepth = -10;
+    public float voidDepth = 30;
 
     public float speedVector = 0;
     float moveDirection = 0;
