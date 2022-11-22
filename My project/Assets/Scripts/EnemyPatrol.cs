@@ -8,8 +8,11 @@ public class EnemyPatrol : MonoBehaviour
 
     public GameObject target;
     private Vector3 targetPosition;
+    private Vector3 coltargetPosition;
     private Vector3 startPosition;
+    private Vector3 colstartPosition;
     public GameObject player;
+    public GameObject col;
 
     public float moveSpeed;
     private bool movingToTarget;
@@ -18,7 +21,10 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        colstartPosition = col.transform.position;
         targetPosition = target.transform.position;
+        coltargetPosition = targetPosition;
+        coltargetPosition.y = colstartPosition.y; 
         movingToTarget = true;
     }
 
@@ -32,13 +38,16 @@ public class EnemyPatrol : MonoBehaviour
 			{
 				sr.flipX = false;
 				transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+				col.transform.position = Vector3.MoveTowards(col.transform.position, coltargetPosition, moveSpeed * Time.deltaTime);
 				if (transform.position == targetPosition) movingToTarget = false;
 			} else 
 			{
 				sr.flipX = true;
 				transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
+				col.transform.position = Vector3.MoveTowards(col.transform.position, colstartPosition, moveSpeed * Time.deltaTime);
 				if (transform.position == startPosition) movingToTarget = true;
 			}
+			// col.transform.position.x = this.transform.position.x;
 		}
 	}
 }
