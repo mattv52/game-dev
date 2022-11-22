@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     float preMove = 0;
     public bool grounded = false;
     public bool frozen = false;
-    bool canDouble = false;
+    public bool canDouble = false;
     public bool touchingSlime = false;
     public GameObject tint;
     Rigidbody2D r2d;
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
             canDouble = true;
         }
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !frozen)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -158,10 +158,38 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Slime")
         {
             touchingSlime = true;
+            grounded = true;
+            canDouble = true;
         }
         if (collision.gameObject.tag == "Bounce")
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight * 2);
+        }
+    }   
+
+    void OnTriggerEnter2D(Collider2D collide)
+    {
+        if (collide.gameObject.tag == "Enemy" && !frozen)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = false;
+        }
+        if (collision.gameObject.tag == "Slime")
+        {
+            touchingSlime = false;
+            grounded = false;
+        }
+
+        if (collision.gameObject.tag == "Bounce")
+        {
+            canDouble = true;
         }
     }
 }
